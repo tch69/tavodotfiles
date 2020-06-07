@@ -1,0 +1,57 @@
+! special
+*.foreground:   #f2f2f2
+*.background:   #080808
+*.cursorColor:  #f2f2f2
+
+! black
+*.color0:       #080808
+*.color8:       #343434
+
+! red
+*.color1:       #e92f2f
+*.color9:       #e92f2f
+
+! green
+*.color2:       #00db2f
+*.color10:      #00db2f
+
+! yellow
+*.color3:       #dddd13
+*.color11:      #dddd13
+
+! blue
+*.color4:       #3b48e3
+*.color12:      #3b48e3
+
+! magenta
+*.color5:       #cb0f9f
+*.color13:      #cb0f9f
+
+! cyan
+*.color6:       #008df7
+*.color14:      #008df7
+
+! white
+*.color7:       #ababab
+*.color15:      #ffffff
+
+
+! URxvt
+URxvt.modifier: mod1
+URxvt*loginShell: true
+URxvt.borderless: false
+URxvt*dynamicColors: on
+URxvt.background: [95]#080808
+URxvt*letterSpace: -0.85
+URxvt.lineSpace: 0
+URxvt.loginShell: true
+URxvt.saveLines: 5000
+URxvt.scrollBar: false
+URxvt.scrollstyle: plain
+URxvt*termName: xterm-256color
+URxvt.transparent: false
+URxvt.visualBell: false
+URxvt.geometry: 88x29
+URxvt.depth: 32
+URxvt*font:     xft:Roboto Mono:size=10
+URxvt*boldFont: xft:Roboto Mono:bold:size=10
