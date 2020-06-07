@@ -1,7 +1,7 @@
 #!/bin/bash
 # baraction.sh for spectrwm status bar
 
-## DISK
+## Disk 
 hdd() {
   hdd="$(df -h | awk 'NR==4{print $3"/"$4, $5}')"
   echo -e "HDD: $hdd"
@@ -24,7 +24,7 @@ cpu() {
   echo -e "CPU: $cpu%"
 }
 
-## VOLUME
+## Volume
 vol() {
     vol=`amixer get Master | awk 'NR==5{print $4}'`
     echo -e "$vol"
@@ -37,10 +37,6 @@ ibus() {
 SLEEP_SEC=0.2
 #loops forever outputting a line every SLEEP_SEC secs
 
-# It seems that we are limited to how many characters can be displayed via
-# the baraction script output. And the the markup tags count in that limit.
-# So I would love to add more functions to this script but it makes the 
-# echo output too long to display correctly.
 while :; do
     echo "$(cpu) | $(mem) | $(hdd) | $(vol) | $(ibus) |"
 	sleep $SLEEP_SEC
