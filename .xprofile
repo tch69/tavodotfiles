@@ -1,5 +1,0 @@
-## Autostart
-nitrogen --restore &
-ibus-daemon &
-xcompmgr &
-xrdb $HOME/.Xresources &
