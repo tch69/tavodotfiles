@@ -1,4 +1,11 @@
 keycode 9  = grave asciitilde grave asciitilde
-keycode 49 = Escape NoSymbol Escape
-keycode 66 = Control_L
+keycode 33 = semicolon colon semicolon colon
 keycode 37 = Caps_Lock
+keycode 47 = comma less comma less
+keycode 48 = period greater period greater
+keycode 49 = Escape NoSymbol Escape
+keycode 57 = p P p P
+keycode 58 = n N n N
+keycode 59 = m M m M
+keycode 60 = apostrophe quotedbl apostrophe quotedbl
+keycode 66 = Control_L
