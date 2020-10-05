@@ -1,6 +1,0 @@
-## Vimb config file
-# Homepage
-set home-page=http://duckduckgo.com
-
-# Download location
-set download-path=$HOME/Downloads
