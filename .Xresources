@@ -1,3 +1,5 @@
+! .Xresources
+
 ! Foreground, background and cursor
 *.foreground:   #f2f2f2
 *.background:   #080808
@@ -11,7 +13,7 @@
 *.color4:	#3b48e3
 *.color5:	#cb0f9f
 *.color6:	#008df7
-*.color7:	#ababab	
+*.color7:	#ffffff
 *.color8:	#343434
 *.color9:	#e92f2f
 *.color10:	#00db2f
@@ -19,4 +21,4 @@
 *.color12:	#3b48e3
 *.color13:	#cb0f9f
 *.color14:	#008df7
-*.color15:	#ffffff
+*.color15:	#efefef
