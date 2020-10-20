@@ -1,0 +1,6 @@
+#!/bin/sh
+## Play video URL copied in clipboard
+
+link=$(xsel -b)
+
+mpv "$link"
