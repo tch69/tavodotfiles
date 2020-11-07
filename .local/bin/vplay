@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls ~/YTDownloads/ | dmenu -l 10 -i -p 'What you wanna play?' | sed -e 's/.*/"&"/' | sed 's/^/YTDownloads\//g' | xargs -r mpv

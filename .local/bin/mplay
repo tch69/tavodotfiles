@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Terminate any other mpv process already up
+[ pgrep mpv 2>/dev/null ]; killall mpv
+
+ls ~/Music/ | dmenu -l 10 -i -p 'What you wanna play?' | sed -e 's/.*/"&"/' | sed 's/^/Music\//g' | xargs -r st -e mpv
