@@ -1,0 +1,36 @@
+#!/usr/local/bin/bash
+# Originally from Nathanial Maia' script
+
+## Colors, foregrounds and backgrounds
+FG=$'\e[0m'
+for n in {0..7}; do printf -v FG${n} "%b" "\e[1;3${n}m"; done
+for n in {0..7}; do printf -v BG1${n} "%b" "\e[1;4${n}m"; done
+for n in {0..7}; do printf -v BG2${n} "%b" "\e[1;10${n}m"; done
+
+## Looping letters, useful for later
+LOOP() { nstring=$(printf "%$1s") ; echo ${nstring// /$2}; }
+
+OS=$(head -n1 /var/run/os-release | tr -d 'NAME=' | cut -f 2 -d '"')
+KERNEL=$(uname -v | awk '{print $3}')
+WM=$(wmctrl -m | grep -i 'Name')
+PACKAGE=$(pkg info | wc -l | tr -d ' ')
+
+clear
+
+cat <<- EOF
+
+${OFFSET} $FG5->$FG2   $USER$FG3@$FG1$HOST
+${OFFSET} $FG5$(LOOP $((${#USER} + 10 + ${#HOST})) "-")>
+
+${OFFSET} $FG6->$FG4   OS/Distro$FG1: $FG$OS
+${OFFSET} $FG6->$FG4   Kernel$FG1:    $FG$KERNEL
+${OFFSET} $FG6->$FG4   Packages$FG1:  $FG$PACKAGE
+${OFFSET} $FG6->$FG4   Shell$FG1:     $FG${SHELL##*/}
+${OFFSET} $FG6->$FG4   WM$FG1:        $FG${WM##* }
+${OFFSET} $FG6->$FG4   Terminal$FG1:  $FG$TERM
+
+${OFFSET}   $BG10   $BG11   $BG12   $BG13   $BG14   $BG15   $BG16   $BG17   $FG
+${OFFSET}   $BG20   $BG21   $BG22   $BG23   $BG24   $BG25   $BG26   $BG27   $FG
+
+
+EOF
