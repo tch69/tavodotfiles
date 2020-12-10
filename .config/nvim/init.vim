@@ -1,6 +1,7 @@
 "" .config/nvim/init.vim
 "" Neovim config file
 
+set bg=light
 set encoding=utf-8
 set mouse=a
 set wildmode=longest,list,full
