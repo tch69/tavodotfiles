@@ -4,14 +4,13 @@
 
 export GTK_IM_MODULE=ibus &
 export XMODIFIERS=@im=ibus &
-export QT_IM_MODULE=xim &
+export QT_IM_MODULE=ibus &
 
 setxkbmap -option "ctrl:swapcaps" &
 xmodmap /usr/home/fa2_l/.Xmodmap &
 xrdb /usr/home/fa2_l/.Xresources &
-xcompmgr &
 
-~/.scripts/back.sh &
+setbg
 ibus-daemon -drx &
 
 pulseaudio --daemon &
