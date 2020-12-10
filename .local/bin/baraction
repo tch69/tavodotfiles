@@ -7,12 +7,12 @@ disk() {
 }
 
 vol() {
-	vol=$(sndioctl output.level)
-	echo -e "VOL: ${vol##*=}"
+	vol=$(amixer get Master | awk '/Mono:/ {print $4}' tr -d '[][]' )
+	echo -e "VOL: ${vol}"
 
 }
 
 while :; do
-	echo "$(uname) | $(disk) | $(vol) | $(ibus engine) |"
+	echo "$(disk) | $(vol) | $(ibus engine) |"
 	sleep 0.1
 done
