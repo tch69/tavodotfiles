@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 # Originally from Nathanial Maia' script
 
 ## Colors, foregrounds and backgrounds
@@ -14,7 +14,7 @@ lett_loop() {
 }
 
 # OS/Distro, Kernel version, WM being used and packages number
-os=$(head -n1 /var/run/os-release | cut -f 2 -d '"')
+os=$(head -n1 /etc/os-release | cut -f 2 -d '"')
 kernel=$(uname -r)
 wm=$(wmctrl -m | head -n1)
 packs=$(pkg info | wc -l)
