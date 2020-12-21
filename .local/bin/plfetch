@@ -18,8 +18,6 @@ os=$(head -n1 /etc/os-release | cut -f 2 -d '"')
 kernel=$(uname -r)
 wm=$(wmctrl -m | head -n1)
 packs=$(pkg info | wc -l)
-# Set HOST if not set by the shell
-[ -z $HOST ] && HOST=$(hostname);
 
 clear
 
