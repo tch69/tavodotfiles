@@ -18,4 +18,4 @@ autocmd VimLeave .Xresources !xrdb %
 autocmd BufWritePre * %s/\s\+$//e
 
 nnoremap SS :%s//g<Left><Left>
-nnoremap ZX :w!<Return>
+nnoremap XX :w!<Return>
