@@ -10,7 +10,8 @@ set smarttab
 set ruler
 set number relativenumber
 set nobackup
-set nowritebackup
+set nocompatible
+set backspace=indent,eol,start
 
 syntax on
 
