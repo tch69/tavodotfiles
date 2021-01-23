@@ -2,5 +2,5 @@
 # Dumb background script
 # This script changes the desktop wallpaper.
 
-back=$(ls .config/backgrounds | shuf | head -n1)
-feh --bg-scale ~/.config/backgrounds/$back
+back=$(ls ~/.local/share/wallpapers | shuf | head -n1)
+feh --bg-scale ~/.local/share/wallpapers/$back
