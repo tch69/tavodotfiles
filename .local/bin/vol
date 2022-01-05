@@ -1,0 +1,20 @@
+#!/bin/sh
+## A convenient way to change the audio volume on NetBSD
+
+master_vol=$(mixerctl outputs.master4) # master4 works on my machine anyway
+master_vol=${master_vol##*=}
+lvol=${master_vol%%,*}
+rvol=${master_vol##*,}
+
+case $1 in
+	"-i") exec mixerctl -w outputs.master4=$(( lvol + $2 * 8 )),$(( rvol + $2 * 8 )) ;;
+	"-d") exec mixerctl -w outputs.master4=$(( lvol - $2 * 8 )),$(( rvol - $2 * 8 )) ;;
+	"-s") echo "$(( lvol * 100 / 248 ))%/$(( rvol * 100 / 248 ))%" ;;
+	*) echo "Just... look at the script LMAO";;
+esac
+
+echo "$lvol,$rvol" > $HOME/.cache/vol
+
+unset lvol
+unset rvol
+unset master_vol
