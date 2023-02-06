@@ -1,24 +1,37 @@
-! .Xresources
-
-! Foreground, background and cursor
-*.foreground:   #f2f2f2
+! special
+*.foreground:   #efefef
 *.background:   #080808
-*.cursorColor:  #f2f2f2
+*.cursorColor:  #efefef
 
-! Main color scheme
-*.color0:	#080808
-*.color1:	#e92f2f
-*.color2:	#00db2f
-*.color3:	#dddd13
-*.color4:	#3b48e3
-*.color5:	#cb0f9f
-*.color6:	#008df7
-*.color7:	#ffffff
-*.color8:	#343434
-*.color9:	#e92f2f
-*.color10:	#00db2f
-*.color11:	#dddd13
-*.color12:	#3b48e3
-*.color13:	#cb0f9f
-*.color14:	#008df7
-*.color15:	#efefef
+! black
+*.color0:       #080808
+*.color8:       #343434
+
+! red
+*.color1:       #d92d2d
+*.color9:       #e92f2f
+
+! green
+*.color2:       #009b2c
+*.color10:      #01a252
+
+! yellow
+*.color3:       #dddd13
+*.color11:      #dddd13
+
+! blue
+*.color4:       #246cef
+*.color12:      #3c8bef
+
+! magenta
+*.color5:       #dd7e7e
+*.color13:      #dd9d9d
+
+! cyan
+*.color6:       #76aef4
+*.color14:      #72b4f4
+
+! white
+*.color7:       #ffffff
+*.color15:      #efefef
+
