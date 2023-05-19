@@ -1,0 +1,12 @@
+#!/bin/sh
+## Status script
+
+while true; do
+	dist=$(head -n1 /etc/os-release | tr -d '""' | cut -f 2 -d "=")
+	disk=$(df -h | awk '/^\/dev\// {print $1" "$3"/"$2" "$5" "$4}')
+	mem=$(free -h | awk '/Mem:/ {print $3"/"$2}')
+	vol=$(amixer get Master | awk '/Mono:/ {print $4}' | tr -d '[][]' )
+	engine=$(ibus engine)
+	xsetroot -name " $dist | $disk | Net: $(netspeed) | Mem: $mem | Vol: $vol | ${engine##*:} | $(date +"%H:%M:%S [%d/%m/%y]")"
+	sleep 1;
+done
