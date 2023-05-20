@@ -6,17 +6,14 @@ static const unsigned int alpha = 0xe6;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const int user_bh            = 10;
 static const char *fonts[] = {
-	"monospace:size=8.8"
+	"Roboto Mono:style=Medium:size=8.8"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#efefef", "#080808" },
-	[SchemeSel] = { "#efefef", "#d92d2d" },
-	[SchemeSelHighlight] = { "#dddd13", "#d92d2d" },
-	[SchemeNormHighlight] = { "#dddd13", "#080808" },
+	[SchemeNorm] = { "#c3c3c3", "#000000" },
+	[SchemeSel] = { "#000000", "#c3c3c3" },
 	[SchemeOut] = { "#000000", "#00ffff" },
-	[SchemeOutHighlight] = { "#ffc978", "#00ffff" },
 };
 
 static const unsigned int alphas[SchemeLast][2] = {

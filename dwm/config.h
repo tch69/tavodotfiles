@@ -9,18 +9,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "Roboto Mono:style=Medium:size=8.8" };
-static const char dmenufont[]       = "Roboto Mono:style=Medium:size=8.8";
 static const char col_gray1[]       = "#080808";
-static const char col_gray2[]       = "#080808";
-static const char col_gray3[]       = "#efefef";
-static const char col_gray4[]       = "#efefef";
-static const char col_cyan[]        = "#d92d2d";
-static const unsigned int baralpha = 0xe6;
-static const unsigned int borderalpha = OPAQUE;
+static const char col_gray3[]       = "#868686";
+static const char col_gray4[]       = "#c3c3c3";
+static const char col_cyan[]        = "#b9b9b9";
+static const unsigned int baralpha = 0xc8;
+static const unsigned int borderalpha = 0xc8;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_gray3  },
+	[SchemeNorm]  = { col_gray3, col_gray1, col_gray1 },
+	[SchemeSel]   = { col_gray4, col_gray1, col_gray4 },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -29,9 +27,10 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"feh", "--bg-fill", "/home/tch/.local/share/backgrounds/7nqvy8ygnufa1.jpg", NULL,
+	"feh", "--bg-fill", "/home/tch/.local/share/background.png", NULL,
 	"xrdb", "/home/tch/.Xresources", NULL,
 	"xcompmgr", NULL,
+	"ibus-daemon", "-rxR", NULL,
 	"dwmblocks", NULL,
 	NULL /* terminate */
 };
@@ -78,7 +77,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-p", "Open: ", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-p", "Open: ", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
