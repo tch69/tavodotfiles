@@ -1,24 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 12;        /* gaps between windows */
-static const unsigned int snap      = 0;       /* snap pixel */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "Roboto Mono:style=Medium:size=8.8" };
-static const char col_gray1[]       = "#080808";
-static const char col_gray3[]       = "#868686";
-static const char col_gray4[]       = "#c3c3c3";
-static const char col_cyan[]        = "#b9b9b9";
-static const unsigned int baralpha = 0xc8;
-static const unsigned int borderalpha = 0xc8;
-static const char *colors[][3]      = {
+static const unsigned int borderpx 	= 2;        /* border pixel of windows */
+static const unsigned int gappx 	= 12;        /* gaps between windows */
+static const unsigned int snap 		= 0;       /* snap pixel */
+static const int swallowfloating 	= 0;        /* 1 means swallow floating windows by default */
+static const int showbar 		= 1;        /* 0 means no bar */
+static const int topbar 		= 1;        /* 0 means bottom bar */
+static const int user_bh 		= 10;        /* 2 is the default spacing around the bar's font */
+static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=8.8" };
+static const char col_black[] 		= "#080808";
+static const char col_dgray[] 		= "#868686";
+static const char col_white[] 		= "#c3c3c3";
+static const unsigned int baralpha 	= 0xc8;
+static const unsigned int borderalpha 	= 0xc8;
+
+static const char *colors[][3] = {
 	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1, col_gray1 },
-	[SchemeSel]   = { col_gray4, col_gray1, col_gray4 },
+	[SchemeNorm]  = { col_dgray, col_black, col_black },
+	[SchemeSel]   = { col_white, col_black, col_white },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -89,7 +89,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_s,	 	spawn, 		SHCMD("scrsh full") },
 	{ MODKEY|ShiftMask, 		XK_d,	 	spawn, 		SHCMD("scrsh selected") },
 	{ MODKEY|ShiftMask, 		XK_f,	 	spawn, 		SHCMD("scrsh window") },
-	{ MODKEY, 			XK_z, 		spawn, 		SHCMD("ibus engine m17n:vi:telex") },
+	{ MODKEY, 			XK_z, 		spawn, 		SHCMD("ibus engine Bamboo") },
 	{ MODKEY|ShiftMask, 		XK_z,	 	spawn, 		SHCMD("ibus engine xkb:us::eng") },
 	{ MODKEY, 			XK_b, 		togglebar, 	{0} },
 	{ MODKEY, 			XK_Tab, 	focusstack, 	{.i = +1 } },
