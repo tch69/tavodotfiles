@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#define SESSION_FILE "~/.cache/dwm-session"
+
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
 static const unsigned int gappx 	= 12;        /* gaps between windows */
@@ -117,7 +119,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8, 				7)
 	TAGKEYS(                        XK_9, 				8)
 	{ MODKEY|ShiftMask,             XK_q, 		quit, 		{0} },
-	{ MODKEY|ShiftMask,		XK_r,      	spawn, 		SHCMD("pkill dwm") },
+	{ MODKEY|ShiftMask,		XK_r,      	quit, 		{1} },
 };
 
 /* button definitions */

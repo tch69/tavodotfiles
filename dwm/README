@@ -8,6 +8,8 @@ This is my personal build of dwm, with my colorscheme, keybinds and these patche
 - bar height (spacing)
 - cool autostart
 - fullgaps
+- restartsig
+- restoreafterrestart
 - status2d
 - swallow
 
