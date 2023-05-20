@@ -2,12 +2,12 @@ Hey there!
 
 This is what I use on my crappy PC. dwm with some basic configurations.
 
-There is preview_<whatever-date>.png there just in case you wana see what this
+There is preview_<whatever-date>.png there just in case you wanaa see what this
 actually looks like.
 
 This repo used to only contain my dotfiles. dwm, st, dwmblocks, etc used to
 have their own repo instead. However, due to it being inconvenient as fuck. I
-merged them into this repo. Those repos are now archived and will be deleted
+merged them into this repo. Those old repos are now archived and will be deleted
 soon. But of course, I don't know when I'll actually do that.
 
 Also, please suggest me something to replace Roboto Mono. I don't hate that
