@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define SESSION_FILE "~/.cache/dwm-session"
+#define SESSION_FILE "/tmp/.dwm-layout"
 
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
@@ -29,7 +29,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"feh", "--bg-fill", "/home/tch/.local/share/background.png", NULL,
+	"random_bg", NULL,
 	"xrdb", "/home/tch/.Xresources", NULL,
 	"xcompmgr", NULL,
 	"ibus-daemon", "-rxR", NULL,

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+feh --bg-scale $(find ~/.local/share/backgrounds -type f | shuf | tail -n1)
