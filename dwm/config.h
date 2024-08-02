@@ -4,13 +4,13 @@
 
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
-static const unsigned int gappx 	= 12;        /* gaps between windows */
+static const unsigned int gappx 	= 18;        /* gaps between windows */
 static const unsigned int snap 		= 0;       /* snap pixel */
 static const int swallowfloating 	= 0;        /* 1 means swallow floating windows by default */
 static const int showbar 		= 1;        /* 0 means no bar */
 static const int topbar 		= 1;        /* 0 means bottom bar */
-static const int user_bh 		= 10;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=8.8" };
+static const int user_bh 		= 18;        /* 2 is the default spacing around the bar's font */
+static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=11" };
 static const char col_black[] 		= "#080808";
 static const char col_dgray[] 		= "#868686";
 static const char col_white[] 		= "#c3c3c3";
@@ -29,11 +29,12 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
+	"dwmblocks", NULL,
+	"ibus-daemon", "-drxR", NULL,
 	"random_bg", NULL,
 	"xrdb", "/home/tch/.Xresources", NULL,
 	"xcompmgr", NULL,
-	"ibus-daemon", "-rxR", NULL,
-	"dwmblocks", NULL,
+	"pp", NULL,
 	NULL /* terminate */
 };
 
@@ -98,8 +99,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Tab, 	focusstack, 	{.i = -1 } },
 	{ MODKEY, 			XK_i, 		incnmaster,     {.i = +1 } },
 	{ MODKEY, 			XK_d, 		incnmaster,     {.i = -1 } },
-	{ MODKEY, 			XK_h, 		setmfact,       {.f = -0.05} },
-	{ MODKEY, 			XK_l, 		setmfact,       {.f = +0.05} },
+	{ MODKEY, 			XK_h, 		setmfact,       {.f = -0.02} },
+	{ MODKEY, 			XK_l, 		setmfact,       {.f = +0.02} },
 	{ MODKEY, 			XK_space, 	zoom,           {0} },
 	{ MODKEY, 			XK_0, 		view, 		{0} },
 	{ MODKEY, 			XK_x,      	killclient,     {0} },

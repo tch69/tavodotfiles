@@ -5,14 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Roboto Mono:size=10:antialias=true:autohint=true";
+static char *font = "Roboto Mono:size=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
 /*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
 
-static int borderpx = 10;
+static int borderpx = 15;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -66,7 +66,7 @@ static double maxlatency = 33;
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 5;
+static unsigned int blinktimeout = 500;
 
 /*
  * thickness of underline and bar cursors
