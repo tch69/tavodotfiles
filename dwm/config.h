@@ -1,12 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
 #define SESSION_FILE "/tmp/.dwm-layout"
 
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
 static const unsigned int gappx 	= 18;        /* gaps between windows */
-static const unsigned int snap 		= 0;       /* snap pixel */
-static const int swallowfloating 	= 0;        /* 1 means swallow floating windows by default */
+static const unsigned int snap 		= 1;       /* snap pixel */
+static const int swallowfloating 	= 1;        /* 1 means swallow floating windows by default */
 static const int showbar 		= 1;        /* 0 means no bar */
 static const int topbar 		= 1;        /* 0 means bottom bar */
 static const int user_bh 		= 18;        /* 2 is the default spacing around the bar's font */
@@ -34,7 +35,7 @@ static const char *const autostart[] = {
 	"random_bg", NULL,
 	"xrdb", "/home/tch/.Xresources", NULL,
 	"xcompmgr", NULL,
-	"pp", NULL,
+	//"/usr/libexec/pipewire-launcher", NULL,
 	NULL /* terminate */
 };
 
@@ -87,8 +88,11 @@ static const Key keys[] = {
 	/* modifier                     key        	function        argument */
 	{ MODKEY, 			XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask, 		XK_Up, 		spawn, 		SHCMD("amixer set Master 1+") },
-	{ MODKEY|ShiftMask, 		XK_Down, 	spawn, 		SHCMD("amixer set Master 1-") },
+	{ 0, XF86XK_AudioMute, 	spawn, 		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ 0, XF86XK_AudioLowerVolume, 	spawn, 		SHCMD("amixer set Master 1%-") },
+	{ 0, XF86XK_AudioRaiseVolume, 	spawn, 		SHCMD("amixer set Master 1%+") },
+	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		SHCMD("brightnessctl s 1%-") },
+	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		SHCMD("brightnessctl s 1%+") },
 	{ MODKEY|ShiftMask, 		XK_s,	 	spawn, 		SHCMD("scrsh full") },
 	{ MODKEY|ShiftMask, 		XK_d,	 	spawn, 		SHCMD("scrsh selected") },
 	{ MODKEY|ShiftMask, 		XK_f,	 	spawn, 		SHCMD("scrsh window") },

@@ -4,7 +4,6 @@ st is a simple terminal emulator for X which sucks less.
 
 This is my personal build of st, including my keybinds and following patches:
 - alpha
-- anysize
 - blinking cursor
 - boxdraw
 - bold is not bright
