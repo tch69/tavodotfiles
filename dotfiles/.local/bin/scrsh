@@ -9,7 +9,7 @@ case $1 in
 	"full") mode="$1"
 		opts="" ;;
 	"selected") mode="$1"
-		opts="-s" ;;
+		opts="-s -f" ;;
 	"window") mode="$1"
 		opts="-u -b" ;;
 	*) ;;

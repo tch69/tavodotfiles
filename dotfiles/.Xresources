@@ -35,3 +35,4 @@
 *.color7:       #dddddd
 *.color15:      #e3e3e3
 
+Xft.dpi: 120

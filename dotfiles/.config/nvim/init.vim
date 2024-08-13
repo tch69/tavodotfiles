@@ -2,7 +2,8 @@
 "" Neovim config file
 
 "" Appearance
-colorscheme vim
+"colorscheme vim
+set notermguicolors
 set bg=light
 set number relativenumber
 set ruler

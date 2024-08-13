@@ -5,13 +5,14 @@
 
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
-static const unsigned int gappx 	= 18;        /* gaps between windows */
+static const unsigned int gappx 	= 25;        /* gaps between windows */
 static const unsigned int snap 		= 1;       /* snap pixel */
 static const int swallowfloating 	= 1;        /* 1 means swallow floating windows by default */
 static const int showbar 		= 1;        /* 0 means no bar */
 static const int topbar 		= 1;        /* 0 means bottom bar */
-static const int user_bh 		= 18;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=11" };
+static const int user_bh 		= 20;        /* 2 is the default spacing around the bar's font */
+static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=9",
+	"fontawesome:style=Solid:size=9" };
 static const char col_black[] 		= "#080808";
 static const char col_dgray[] 		= "#868686";
 static const char col_white[] 		= "#c3c3c3";
@@ -33,9 +34,8 @@ static const char *const autostart[] = {
 	"dwmblocks", NULL,
 	"ibus-daemon", "-drxR", NULL,
 	"random_bg", NULL,
-	"xrdb", "/home/tch/.Xresources", NULL,
-	"xcompmgr", NULL,
-	//"/usr/libexec/pipewire-launcher", NULL,
+	"unclutter-xfixes", "--timeout", "3", NULL,
+	"picom", NULL,
 	NULL /* terminate */
 };
 
