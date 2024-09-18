@@ -5,14 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Roboto Mono:size=10:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
-};
-
-static int borderpx = 18;
+static char *font = "Roboto Mono:size=10";
+static int borderpx = 15;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -59,7 +53,7 @@ int allowwindowops = 0;
  * near minlatency, but it waits longer for slow updates to avoid partial draw.
  * low minlatency will tear/flicker more, as it can "detect" idle too early.
  */
-static double minlatency = 8;
+static double minlatency = 2;
 static double maxlatency = 33;
 
 /*
@@ -70,7 +64,7 @@ static unsigned int blinktimeout = 500;
 
 /*
  * thickness of underline and bar cursors
-space */
+ */
 static unsigned int cursorthickness = 2;
 
 /*
@@ -83,7 +77,7 @@ const int boxdraw = 1;
 const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
+const int boxdraw_braille = 0;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -112,7 +106,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.65;
+float alpha = 0.7, alphaUnfocused = 0.75;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -141,8 +135,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
+	"black",
 };
 
 
@@ -150,10 +143,11 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 0;
 unsigned int defaultcs = 258;
 static unsigned int defaultrcs = 257;
+unsigned int bg = 0, bgUnfocused = 16;
 
 /*
  * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
@@ -235,52 +229,43 @@ ResourcePref resources[] = {
 };
 
 /*
- * Internal mouse and keyboard shortcuts
- */
-
-#define MODKEY Mod1Mask
-#define TERMMOD (Mod1Mask|ShiftMask)
-
-/*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ MODKEY,               Button4, kscrollup,      {.i = -1} },
-	{ MODKEY,               Button5, kscrolldown,    {.i = -1} },
+	{ ShiftMask,            Button4, kscrollup,      {.i = -1} },
+	{ ShiftMask,            Button5, kscrolldown,    {.i = -1} },
 	{ XK_NO_MOD,            Button4, kscrollup,      {.i = 1} },
 	{ XK_NO_MOD,            Button5, kscrolldown,    {.i = 1} },
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+	//{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
-
 /* Internal keyboard shortcuts. */
+#define MODKEY Mod1Mask
+#define TERMMOD (Mod1Mask|ShiftMask)
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD, 		XK_Break, 	sendbreak, 	{.i =  0} },
-	{ ControlMask, 		XK_Print, 	toggleprinter, 	{.i =  0} },
-	{ ShiftMask, 		XK_Print, 	printscreen, 	{.i =  0} },
-	{ XK_ANY_MOD, 		XK_Print, 	printsel, 	{.i =  0} },
-	{ TERMMOD, 		XK_Up,	 	zoom, 		{.f = +1} },
+	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
+	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
+	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ TERMMOD,              XK_Up,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	{ MODKEY, 		XK_c, 		clipcopy, 	{.i =  0} },
-	{ MODKEY, 		XK_v, 		clippaste, 	{.i =  0} },
+	{ MODKEY, 		XK_c,           clipcopy,       {.i =  0} },
+	{ MODKEY, 		XK_v,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY, 		XK_Up, 		kscrollup, 	{.i =  1} },
-	{ MODKEY, 		XK_Down, 	kscrolldown, 	{.i =  1} },
-	{ MODKEY, 		XK_Page_Up, 	kscrollup, 	{.i = -1} },
-	{ MODKEY, 		XK_Page_Down, 	kscrolldown, 	{.i = -1} },
-	{ TERMMOD, 		XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ TERMMOD, 		XK_Page_Down, 	kscrolldown, 	{.i = -1} },
 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
@@ -358,7 +343,8 @@ static Key key[] = {
 	{ XK_KP_Delete,     ControlMask,    "\033[3;5~",    +1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
-	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
+	//{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",       -1,    0},
 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
@@ -426,7 +412,8 @@ static Key key[] = {
 	{ XK_Delete,        ControlMask,    "\033[3;5~",    +1,    0},
 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0},
-	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
+	//{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
+	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",       -1,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0},
 	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0},

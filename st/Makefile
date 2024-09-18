@@ -4,16 +4,10 @@
 
 include config.mk
 
-SRC = st.c x.c boxdraw.c
+SRC = st.c x.c boxdraw.c hb.c
 OBJ = $(SRC:.c=.o)
 
-all: options st
-
-options:
-	@echo st build options:
-	@echo "CFLAGS  = $(STCFLAGS)"
-	@echo "LDFLAGS = $(STLDFLAGS)"
-	@echo "CC      = $(CC)"
+all: st
 
 config.h:
 	cp config.def.h config.h
@@ -22,8 +16,9 @@ config.h:
 	$(CC) $(STCFLAGS) -c $<
 
 st.o: config.h st.h win.h
-x.o: arg.h config.h st.h win.h
+x.o: arg.h config.h st.h win.h hb.h
 boxdraw.o: config.h st.h boxdraw_data.h
+hb.o: st.h
 
 $(OBJ): config.h config.mk
 
@@ -55,4 +50,4 @@ uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
 
-.PHONY: all options clean dist install uninstall
+.PHONY: all clean dist install uninstall
