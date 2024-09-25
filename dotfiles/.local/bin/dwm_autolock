@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xautolock -time 3 -locker dwm_scrlock -killtime 10 -killer "loginctl hibernate" -secure -corners 0+0- -cornerdelay 2 -cornerredelay 60 -detectsleep

@@ -4,9 +4,12 @@ bpath="/sys/class/power_supply/BAT0"
 bperc="$(cat ${bpath}/capacity)"
 
 case "$(cat ${bpath}/status)" in
-	"Charging") echo "${bperc}%+";;
-	"Discharging") echo "${bperc}%";;
+	"Charging") status="+";;
+	"Discharging") status="";;
+	"Not charging") status="❌";;
 esac
+
+echo "${bperc}%${status}"
 
 unset bpath
 unset bperc

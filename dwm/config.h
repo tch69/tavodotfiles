@@ -5,11 +5,13 @@
 
 /* appearance */
 static const unsigned int borderpx 	= 2;        /* border pixel of windows */
-static const unsigned int gappx 	= 25;        /* gaps between windows */
+static const unsigned int gappx 	= 30;        /* gaps between windows */
 static const unsigned int snap 		= 1;       /* snap pixel */
 static const int swallowfloating 	= 1;        /* 1 means swallow floating windows by default */
 static const int showbar 		= 1;        /* 0 means no bar */
 static const int topbar 		= 1;        /* 0 means bottom bar */
+static const int vertpad 		= 12;       /* vertical padding of bar */
+static const int sidepad  		= 12;       /* horizontal padding of bar */
 static const int user_bh 		= 20;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=9",
 	"fontawesome:style=Solid:size=9" };
@@ -31,11 +33,15 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
+	"acpi_control", NULL,
 	"dwmblocks", NULL,
-	"ibus-daemon", "-drxR", NULL,
-	"random_bg", NULL,
-	"unclutter-xfixes", "--timeout", "3", NULL,
+	"dwm_autolock", NULL,
+	"dwm_bgrand", NULL,
+	"ibus-daemon", "-drx", NULL,
+	"mpd", "/home/tch/.config/mpd/mpd.conf", "NULL",
+	"mpDris2", "--host=/home/tch/.local/share/mpd/socket", NULL,
 	"picom", NULL,
+	"unclutter-xfixes", "--timeout", "3", NULL,
 	NULL /* terminate */
 };
 
@@ -58,7 +64,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
@@ -88,16 +94,16 @@ static const Key keys[] = {
 	/* modifier                     key        	function        argument */
 	{ MODKEY, 			XK_Return, 	spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, 	spawn,          {.v = dmenucmd } },
-	{ 0, XF86XK_AudioMute, 	spawn, 		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ 0, XF86XK_AudioMute, 		spawn, 		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ 0, XF86XK_AudioLowerVolume, 	spawn, 		SHCMD("amixer set Master 1%-") },
 	{ 0, XF86XK_AudioRaiseVolume, 	spawn, 		SHCMD("amixer set Master 1%+") },
+	{ 0, XF86XK_AudioMicMute, 	spawn, 		SHCMD("dwm_micmute") },
 	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		SHCMD("brightnessctl s 1%-") },
 	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		SHCMD("brightnessctl s 1%+") },
-	{ MODKEY|ShiftMask, 		XK_s,	 	spawn, 		SHCMD("scrsh full") },
-	{ MODKEY|ShiftMask, 		XK_d,	 	spawn, 		SHCMD("scrsh selected") },
-	{ MODKEY|ShiftMask, 		XK_f,	 	spawn, 		SHCMD("scrsh window") },
-	{ MODKEY, 			XK_z, 		spawn, 		SHCMD("ibus engine Bamboo") },
-	{ MODKEY|ShiftMask, 		XK_z,	 	spawn, 		SHCMD("ibus engine xkb:us::eng") },
+	{ MODKEY|ShiftMask, 		XK_s,	 	spawn, 		SHCMD("dwm_scrsh full") },
+	{ MODKEY|ShiftMask, 		XK_d,	 	spawn, 		SHCMD("dwm_scrsh selected") },
+	{ MODKEY|ShiftMask, 		XK_f,	 	spawn, 		SHCMD("dwm_scrsh window") },
+	{ MODKEY|ShiftMask, 		XK_l,	 	spawn, 		SHCMD("dwm_scrlock") },
 	{ MODKEY, 			XK_b, 		togglebar, 	{0} },
 	{ MODKEY, 			XK_Tab, 	focusstack, 	{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Tab, 	focusstack, 	{.i = -1 } },

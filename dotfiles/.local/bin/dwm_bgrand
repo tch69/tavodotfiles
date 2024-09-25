@@ -1,0 +1,3 @@
+#!/bin/sh
+
+feh --bg-fill $(find ~/.local/share/backgrounds -type f | shuf -n1 )

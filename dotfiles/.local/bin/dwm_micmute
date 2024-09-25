@@ -1,0 +1,12 @@
+#!/bin/sh
+
+LED="/sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness"
+
+wpctl status | \
+	sed -n '/Microphone \[vol/s/.* \([0-9]\+\)\. .*/\1/p' | \
+	awk '{ system("wpctl set-mute " $0 " toggle")}'
+
+case $(pactl get-source-mute @DEFAULT_SOURCE@) in
+	"Mute: yes") echo 1 > ${LED};;
+	"Mute: no") echo 0 > ${LED};;
+esac

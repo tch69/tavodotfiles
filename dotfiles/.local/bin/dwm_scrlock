@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#i3conf=" -B 10 --clock \
+#	--color=00000020 \
+#	--ind-pos=86:803:7 \
+#	--radius=20 \
+#	--line-uses-inside \
+#	--wrong-text="" \
+#	--verif-text="" \
+#	--time-pos=480:500:1920:1080:7 \
+#	--time-size=54 \
+#	--time-color=ddddddff \
+#	--date-color=ddddddff
+#	"
+
+
+playerctl pause
+#i3lock ${i3conf}
+[ "$(pgrep -f /usr/local/bin/slock)" = "" ] &&
+	slock -m "$(fortune -a)" 2&>1;
+
+#[ "$(pgrep -f /usr/bin/i3lock)" = "" ] &&
+#	i3lock ${i3conf};
