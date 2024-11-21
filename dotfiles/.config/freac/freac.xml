@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigFile>
+ <configuration name="default">
+  <section name="Settings">
+   <value name="LastOutputDirectory1">/home/tch/</value>
+   <value name="Language">freac_vi.xml</value>
+   <value name="StartCount">2</value>
+   <value name="WindowPosX">30</value>
+   <value name="WindowPosY">71</value>
+   <value name="WindowSizeX">1354</value>
+   <value name="WindowSizeY">732</value>
+   <value name="Encoder">lame-enc</value>
+   <value name="WindowMaximized">0</value>
+   <value name="ShowTips">0</value>
+   <value name="NextTip">1</value>
+   <value name="NotificationAvailable">1</value>
+   <value name="EncodeToSingleFile">0</value>
+   <value name="ShowTitleInfo">1</value>
+   <value name="WriteToInputDirectory">0</value>
+   <value name="AllowOverwriteSource">0</value>
+   <value name="ActiveConfiguration">default</value>
+  </section>
+  <section name="Tags">
+   <value name="DefaultComment">fre:ac - free audio converter &lt;https://www.freac.org/&gt;</value>
+  </section>
+  <section name="Ripper">
+   <value name="ActiveDrive">0</value>
+  </section>
+  <section name="Donate">
+   <value name="StartCount">2</value>
+  </section>
+  <section name="LanguageNotifier">
+   <value name="StartCount">2</value>
+  </section>
+  <section name="Playlist">
+   <value name="CreatePlaylist">0</value>
+   <value name="CreateCueSheet">0</value>
+  </section>
+  <section name="freedb">
+   <value name="EnableCDDBCache">1</value>
+  </section>
+  <section name="Processing">
+   <value name="EnableProcessing">1</value>
+   <value name="ProcessPlayback">1</value>
+  </section>
+  <section name="Joblist">
+   <value name="FieldSizes">120,958,50,80,100</value>
+  </section>
+ </configuration>
+</ConfigFile>

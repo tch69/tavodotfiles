@@ -13,8 +13,8 @@ static const int topbar 		= 1;        /* 0 means bottom bar */
 static const int vertpad 		= 12;       /* vertical padding of bar */
 static const int sidepad  		= 12;       /* horizontal padding of bar */
 static const int user_bh 		= 20;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[] 		= { "Roboto Mono:style=Medium:size=9",
-	"fontawesome:style=Solid:size=9" };
+static const char *fonts[] 		= { "monospace:style=Medium:size=9",
+	"Font Awesome 6 Free:style=Solid:size=9" };
 static const char col_black[] 		= "#080808";
 static const char col_dgray[] 		= "#868686";
 static const char col_white[] 		= "#c3c3c3";
@@ -33,13 +33,10 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"acpi_control", NULL,
 	"dwmblocks", NULL,
 	"dwm_autolock", NULL,
 	"dwm_bgrand", NULL,
-	"ibus-daemon", "-drx", NULL,
-	"mpd", "/home/tch/.config/mpd/mpd.conf", "NULL",
-	"mpDris2", "--host=/home/tch/.local/share/mpd/socket", NULL,
+	"ibus-daemon", "-dx", NULL,
 	"picom", NULL,
 	"unclutter-xfixes", "--timeout", "3", NULL,
 	NULL /* terminate */
@@ -57,6 +54,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 	{ "Fceux-gtk", NULL, NULL, 		0, 	1, 	0, 		-1 },
 };
@@ -97,9 +95,9 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMute, 		spawn, 		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ 0, XF86XK_AudioLowerVolume, 	spawn, 		SHCMD("amixer set Master 1%-") },
 	{ 0, XF86XK_AudioRaiseVolume, 	spawn, 		SHCMD("amixer set Master 1%+") },
-	{ 0, XF86XK_AudioMicMute, 	spawn, 		SHCMD("dwm_micmute") },
-	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		SHCMD("brightnessctl s 1%-") },
-	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		SHCMD("brightnessctl s 1%+") },
+	{ 0, XF86XK_AudioMicMute, 	spawn, 		SHCMD("dwm_micmute 1") },
+	{ 0, XF86XK_MonBrightnessDown, 	spawn, 		SHCMD("brightnessctl s 480-") },
+	{ 0, XF86XK_MonBrightnessUp, 	spawn, 		SHCMD("brightnessctl s 480+") },
 	{ MODKEY|ShiftMask, 		XK_s,	 	spawn, 		SHCMD("dwm_scrsh full") },
 	{ MODKEY|ShiftMask, 		XK_d,	 	spawn, 		SHCMD("dwm_scrsh selected") },
 	{ MODKEY|ShiftMask, 		XK_f,	 	spawn, 		SHCMD("dwm_scrsh window") },

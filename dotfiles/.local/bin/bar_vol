@@ -1,0 +1,10 @@
+#!/bin/sh
+
+vol="$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 { print $5" "$12 }')"
+
+case "$(pactl get-sink-mute @DEFAULT_SINK@)" in
+	"Mute: yes") emo="🔈❌";;
+	"Mute: no") emo="🔊";;
+esac
+
+echo "${emo} ${vol}"

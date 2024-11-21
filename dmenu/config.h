@@ -6,7 +6,7 @@ static const unsigned int alpha = 0xd6;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const int user_bh            = 18;
 static const char *fonts[] = {
-	"Roboto Mono:style=Medium:size=9"
+	"monospace:style=Medium:size=9"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {

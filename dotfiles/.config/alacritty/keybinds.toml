@@ -1,0 +1,13 @@
+
+[keyboard]
+bindings = [
+	{ key = "Enter",	mods = "Alt|Shift", 	action = "SpawnNewInstance" },
+	{ key = "Up", 		mods = "Alt|Shift", 	action = "IncreaseFontSize" },
+	{ key = "Down", 	mods = "Alt|Shift", 	action = "DecreaseFontSize" },
+	{ key = "PageUp", 	mods = "Alt", 		action = "ScrollPageUp" },
+	{ key = "PageDown", 	mods = "Alt", 		action = "ScrollPageDown" },
+	{ key = "Up", 		mods = "Alt", 		action = "ScrollLineUp" },
+	{ key = "Down", 	mods = "Alt", 		action = "ScrollLineDown" },
+	{ key = "C", 		mods = "Alt", 		action = "Copy" },
+	{ key = "V", 		mods = "Alt", 		action = "Paste" },
+	]

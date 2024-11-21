@@ -1,6 +1,4 @@
 ## .profile
-# ~
 
-#
-ENV="${HOME}/.ashrc"; export ENV
+ENV="${HOME}/.kshrc"; export ENV
 . ${ENV}

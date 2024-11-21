@@ -13,11 +13,13 @@
 #	--date-color=ddddddff
 #	"
 
+animal="$(cowsay -l | sed '1d' | tr ' ' '\n' | shuf -n1)"
+
 
 playerctl pause
 #i3lock ${i3conf}
-[ "$(pgrep -f /usr/local/bin/slock)" = "" ] &&
-	slock -m "$(fortune -a)" 2&>1;
+[ '$(pgrep -f slock)' ] &&
+	slock -m "$(fortune -a | cowsay -W 128 -f ${animal})";
 
 #[ "$(pgrep -f /usr/bin/i3lock)" = "" ] &&
 #	i3lock ${i3conf};

@@ -1,7 +1,7 @@
 PREFIX  := ${HOME}/.local
 CC      := cc
-CFLAGS  := -pedantic -Wall -Wno-deprecated-declarations -Os
-LDFLAGS := -lX11
+CFLAGS  := -pedantic -Wall -Wno-deprecated-declarations -O3 -g0 -flto
+LDFLAGS := -lX11 -s -flto
 
 # FreeBSD (uncomment)
 #LDFLAGS += -L/usr/local/lib -I/usr/local/include

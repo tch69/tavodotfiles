@@ -10,7 +10,7 @@ cache="${XDG_CACHE_HOME:-${HOME}/.cache}/wttr_cache"
 
 # Tải báo cáo mới mỗi 15 phút hoặc nếu như nó đéo có gì.
 if [ "$(cat ${cache})" == "" ] || [ "$(expr $(date +%s) - $(stat -c %Y ${cache}))" -ge "2400" ]; then
-	curl --connect-timeout 5 -sf https://wttr.in/${location} &> ${cache}
+	curl --connect-timeout 5 -sf https://wttr.in/${location} > ${cache}
 fi
 
 if [ "$(cat ${cache})" == "" ]; then

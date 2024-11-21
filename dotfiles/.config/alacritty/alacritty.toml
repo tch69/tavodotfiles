@@ -1,0 +1,45 @@
+import = [
+	"~/.config/alacritty/keybinds.toml"
+	]
+
+[colors]
+  # Default colors
+  primary.background = '0x000000'
+  primary.foreground = '0xdddddd'
+
+  # Normal colors
+  normal.black =    '0x000000'
+  normal.red =     '0xe72a2a'
+  normal.green =   '0x0e8e45'
+  normal.yellow =  '0xe86407'
+  normal.blue =    '0x1c55bc'
+  normal.magenta = '0xef7d7d'
+  normal.cyan =    '0x498bde'
+  normal.white =   '0xdddddd'
+
+  # Bright colors
+  bright.black =   '0x343434'
+  bright.red =     '0xeb4646'
+  bright.green =   '0x00b35a'
+  bright.yellow =  '0xff7616'
+  bright.blue =    '0x3479d0'
+  bright.magenta = '0xff9494'
+  bright.cyan =    '0x5ca9f4'
+  bright.white =   '0xe3e3e3'
+
+[font]
+  normal.family = "Roboto Mono"
+  bold.family = "Roboto Mono"
+  italic.family = "Roboto Mono"
+  bold_italic.family = "Roboto Mono"
+  size = 10
+
+  offset.x = 0
+  offset.y = 3
+
+[window]
+  opacity = 0.8
+  padding.x = 15
+  padding.y = 15
+
+  decorations = "Full"

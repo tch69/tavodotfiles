@@ -2,11 +2,11 @@
 
 LED="/sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness"
 
-wpctl status | \
-	sed -n '/Microphone \[vol/s/.* \([0-9]\+\)\. .*/\1/p' | \
-	awk '{ system("wpctl set-mute " $0 " toggle")}'
+if [ $1 == "1" ]; then
+	amixer sset Capture toggle
+fi
 
-case $(pactl get-source-mute @DEFAULT_SOURCE@) in
-	"Mute: yes") echo 1 > ${LED};;
-	"Mute: no") echo 0 > ${LED};;
+case $(amixer get Capture | grep -c '\[off\]') in
+	"2") echo 1 > ${LED};;
+	"0") echo 0 > ${LED};;
 esac
