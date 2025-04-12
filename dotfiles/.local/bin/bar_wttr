@@ -1,26 +1,20 @@
 #!/bin/sh
-## Nhiệt độ
-## Dựa trên sb-forecast của Luke Smith
-# https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/statusbar/sb-forecast
+# Nhiệt độ hiện tại, thấp nhất và cao nhất
 
-# Tao đang ở đâu?
-location="Dĩ+An"
-
+location=""
 cache="${XDG_CACHE_HOME:-${HOME}/.cache}/wttr_cache"
+[ ! -e ${cache} ] && touch ${cache};
 
-# Tải báo cáo mới mỗi 15 phút hoặc nếu như nó đéo có gì.
-if [ "$(cat ${cache})" == "" ] || [ "$(expr $(date +%s) - $(stat -c %Y ${cache}))" -ge "2400" ]; then
+if [ ! -s ${cache} ] || [ $(($(date +%s) - $(stat -c %Y ${cache}))) -ge 2400 ]; then
 	curl --connect-timeout 5 -sf https://wttr.in/${location} > ${cache}
 fi
 
-if [ "$(cat ${cache})" == "" ]; then
+if [ ! -s ${cache} ]; then
 	echo "--------"
 else
-	## Đoạn này là ăn cướp của Luke luôn <(")
-	# Hiện nhiệt độ hiện tại
-	sed '4q;d'  ${cache} | grep -o "m\\([-+]\\)*[0-9]\\+" | sed -e '$!d' -e 's/^m//g' -e 's/$/°/' | tr '\n' ' '
-	# Hiện nhiệt độ cao nhất/thấp nhất trong ngày
-	sed '13q;d' ${cache} | grep -o "m\\([-+]\\)*[0-9]\\+" | sed 's/+//g' |
-		sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\nm' ' ' |
-		awk '{print $1 "°/"$2"°"}';
+	sed '4q;p' ${cache} | grep -o "m\\([+-]\\)*[0-9]\\+" | \
+		sed -e 's/m//g' -e 's/+//g' -e 's/$/°/' -e '1q;d' | tr '\n' ' '
+	sed '13q;d' ${cache} | grep -o "[+-][0-9][0-9]" | \
+		sort | sed -e 's/+//g' -e 's/$/°/g' -e '1b' -e '$!d' | \
+		awk 'NR==1 { a = $1 } NR==2 { print a "/" $1 }'
 fi

@@ -1,12 +1,12 @@
 #!/bin/sh
 ## Chụp màn hình: toàn màn, 1 cửa sổ hoặc tự chọn
 
-cmd="scrot -q 100"
+cmd="scrot -q 100 -z"
 mode="$1"
 
 case $1 in
 	"full" | "" ) 	opts="" ;;
-	"selected") 	opts="-s -f" ;;
+	"selected") 	opts="-s -f -l style=dash,width=2,opacity=25,color=#dddddd" ;;
 	"window")	opts="-u -b" ;;
 	*) ;;
 esac

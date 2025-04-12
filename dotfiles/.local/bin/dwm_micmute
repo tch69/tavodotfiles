@@ -1,12 +1,16 @@
 #!/bin/sh
 
+ARG="${1:-0}"
+
 LED="/sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness"
 
-if [ $1 == "1" ]; then
-	amixer sset Capture toggle
+if [ "$ARG" = "1" ]; then
+	wpctl set-mute @DEFAULT_SOURCE@ toggle
 fi
 
-case $(amixer get Capture | grep -c '\[off\]') in
-	"2") echo 1 > ${LED};;
-	"0") echo 0 > ${LED};;
+sleep 0.05
+
+case $(wpctl get-volume @DEFAULT_SOURCE@ | awk '{print $3}') in
+	"[MUTED]") echo 1 > ${LED} ;;
+	"") echo 0 > ${LED};;
 esac

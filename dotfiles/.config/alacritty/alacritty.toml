@@ -1,6 +1,3 @@
-import = [
-	"~/.config/alacritty/keybinds.toml"
-	]
 
 [colors]
   # Default colors
@@ -28,18 +25,23 @@ import = [
   bright.white =   '0xe3e3e3'
 
 [font]
-  normal.family = "Roboto Mono"
-  bold.family = "Roboto Mono"
-  italic.family = "Roboto Mono"
-  bold_italic.family = "Roboto Mono"
+  normal.family = "monospace"
+  bold.family = "monospace"
+  italic.family = "monospace"
+  bold_italic.family = "monospace"
   size = 10
 
   offset.x = 0
-  offset.y = 3
+  offset.y = 4
 
 [window]
-  opacity = 0.8
+  opacity = 0.75
   padding.x = 15
   padding.y = 15
 
   decorations = "Full"
+
+[general]
+import = [
+	"~/.config/alacritty/keybinds.toml"
+	]

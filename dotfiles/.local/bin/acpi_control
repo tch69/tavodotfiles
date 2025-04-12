@@ -1,7 +1,7 @@
 #!/bin/sh
 
 acpi_listen | while read -r line; do
-	if [ `pgrep Xorg` ]; then
+	if [ $(pgrep X) != "" ]; then
 	case ${line} in
 		"button/micmute MICMUTE"* )
 			dwm_micmute

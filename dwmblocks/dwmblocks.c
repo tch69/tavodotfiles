@@ -30,16 +30,16 @@ void dummysighandler(int num);
 void sighandler(int num);
 void getcmds(int time);
 void getsigcmds(unsigned int signal);
-void setupsignals();
+void setupsignals(void);
 void sighandler(int signum);
 int getstatus(char *str, char *last);
-void statusloop();
+void statusloop(void);
 void termhandler();
-void pstdout();
+void pstdout(void);
 #ifndef NO_X
-void setroot();
+void setroot(void);
 static void (*writestatus) () = setroot;
-static int setupX();
+static int setupX(void);
 static Display *dpy;
 static int screen;
 static Window root;
@@ -73,7 +73,7 @@ void getcmd(const Block *block, char *output)
 	//only chop off newline if one is present at the end
 	i = output[i-1] == '\n' ? i-1 : i;
 	if (delim[0] != '\0') {
-		strncpy(output+i, delim, delimLen); 
+		strncpy(output+i, delim, delimLen);
 	}
 	else
 		output[i++] = '\0';
@@ -100,7 +100,7 @@ void getsigcmds(unsigned int signal)
 	}
 }
 
-void setupsignals()
+void setupsignals(void)
 {
 #ifndef __OpenBSD__
 	    /* initialize all real time signals with dummy handler */
@@ -126,7 +126,7 @@ int getstatus(char *str, char *last)
 }
 
 #ifndef NO_X
-void setroot()
+void setroot(void)
 {
 	if (!getstatus(statusstr[0], statusstr[1]))//Only set root if text has changed.
 		return;
@@ -134,7 +134,7 @@ void setroot()
 	XFlush(dpy);
 }
 
-int setupX()
+int setupX(void)
 {
 	dpy = XOpenDisplay(NULL);
 	if (!dpy) {
@@ -147,7 +147,7 @@ int setupX()
 }
 #endif
 
-void pstdout()
+void pstdout(void)
 {
 	if (!getstatus(statusstr[0], statusstr[1]))//Only write out if text has changed.
 		return;
@@ -156,7 +156,7 @@ void pstdout()
 }
 
 
-void statusloop()
+void statusloop(void)
 {
 	setupsignals();
 	int i = 0;

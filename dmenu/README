@@ -2,9 +2,6 @@ dmenu - dynamic menu
 ====================
 dmenu is an efficient dynamic menu for X.
 
-This is my personal build of dmenu, featuring my colorscheme and these patches:
-- alpha
-- highlight
 
 Requirements
 ------------

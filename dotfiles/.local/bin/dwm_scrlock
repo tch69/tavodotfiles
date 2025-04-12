@@ -1,25 +1,6 @@
 #!/bin/sh
 
-#i3conf=" -B 10 --clock \
-#	--color=00000020 \
-#	--ind-pos=86:803:7 \
-#	--radius=20 \
-#	--line-uses-inside \
-#	--wrong-text="" \
-#	--verif-text="" \
-#	--time-pos=480:500:1920:1080:7 \
-#	--time-size=54 \
-#	--time-color=ddddddff \
-#	--date-color=ddddddff
-#	"
-
-animal="$(cowsay -l | sed '1d' | tr ' ' '\n' | shuf -n1)"
-
-
+animal="$(cowsay -l | sed '2d' | shuf -n1)"
 playerctl pause
-#i3lock ${i3conf}
 [ '$(pgrep -f slock)' ] &&
-	slock -m "$(fortune -a | cowsay -W 128 -f ${animal})";
-
-#[ "$(pgrep -f /usr/bin/i3lock)" = "" ] &&
-#	i3lock ${i3conf};
+	slock -m "$(fortune -a | cowsay -W 96 -f ${animal})";
