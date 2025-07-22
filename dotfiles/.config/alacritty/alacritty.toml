@@ -1,47 +1,52 @@
-
 [colors]
-  # Default colors
-  primary.background = '0x000000'
-  primary.foreground = '0xdddddd'
+  primary.background = 	"#000000"
+  primary.foreground = 	"#dddddd"
+  cursor.text = 	"#000000"
+  cursor.cursor = 	"#dddddd"
 
-  # Normal colors
-  normal.black =    '0x000000'
-  normal.red =     '0xe72a2a'
-  normal.green =   '0x0e8e45'
-  normal.yellow =  '0xe86407'
-  normal.blue =    '0x1c55bc'
-  normal.magenta = '0xef7d7d'
-  normal.cyan =    '0x498bde'
-  normal.white =   '0xdddddd'
+  normal.black = 	"#000000"
+  normal.red =	 	"#e12323"
+  normal.green = 	"#06a43e"
+  normal.yellow = 	"#ea7300"
+  normal.blue = 	"#1257d3"
+  normal.magenta = 	"#c80f6b"
+  normal.cyan = 	"#44a0ef"
+  normal.white = 	"#dddddd"
 
-  # Bright colors
-  bright.black =   '0x343434'
-  bright.red =     '0xeb4646'
-  bright.green =   '0x00b35a'
-  bright.yellow =  '0xff7616'
-  bright.blue =    '0x3479d0'
-  bright.magenta = '0xff9494'
-  bright.cyan =    '0x5ca9f4'
-  bright.white =   '0xe3e3e3'
+  bright.black = 	"#5a5a5a"
+  bright.red = 		"#ff4040"
+  bright.green = 	"#0db755"
+  bright.yellow = 	"#ff9630"
+  bright.blue = 	"#2779e1"
+  bright.magenta = 	"#e73f93"
+  bright.cyan = 	"#7ac0fe"
+  bright.white = 	"#ffffff"
 
 [font]
-  normal.family = "monospace"
-  bold.family = "monospace"
-  italic.family = "monospace"
-  bold_italic.family = "monospace"
+  normal.family = 	"monospace"
+  bold.family = 	"monospace"
+  italic.family = 	"monospace"
+  bold_italic.family = 	"monospace"
   size = 10
 
   offset.x = 0
   offset.y = 4
 
 [window]
-  opacity = 0.75
+  decorations = "Full"
+  opacity = 0.8
   padding.x = 15
   padding.y = 15
 
-  decorations = "Full"
-
-[general]
-import = [
-	"~/.config/alacritty/keybinds.toml"
-	]
+[keyboard]
+  bindings = [
+    { key = "Enter",	mods = "Alt|Shift", 	action = "SpawnNewInstance" },
+    { key = "Up", 	mods = "Alt|Shift", 	action = "IncreaseFontSize" },
+    { key = "Down", 	mods = "Alt|Shift", 	action = "DecreaseFontSize" },
+    { key = "PageUp", 	mods = "Alt", 		action = "ScrollPageUp" },
+    { key = "PageDown", mods = "Alt", 		action = "ScrollPageDown" },
+    { key = "Up", 	mods = "Alt", 		action = "ScrollLineUp" },
+    { key = "Down", 	mods = "Alt", 		action = "ScrollLineDown" },
+    { key = "C", 	mods = "Alt", 		action = "Copy" },
+    { key = "V", 	mods = "Alt", 		action = "Paste" },
+  ]

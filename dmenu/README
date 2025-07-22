@@ -2,6 +2,9 @@ dmenu - dynamic menu
 ====================
 dmenu is an efficient dynamic menu for X.
 
+These patches are applied to this build:
+- alpha
+- bar height
 
 Requirements
 ------------

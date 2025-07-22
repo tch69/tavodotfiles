@@ -1,11 +1,26 @@
-include ../opts.mk
-
 # dwm version
 VERSION = 6.5
 
-# Freetype
+# Customize below to fit your system
+
+# paths
+PREFIX = ~/.local
+MANPREFIX = ${PREFIX}/share/man
+
+X11INC = /usr/X11R6/include
+X11LIB = /usr/X11R6/lib
+
+# Xinerama, comment if you don't want it
+XINERAMALIBS  = -lXinerama
+XINERAMAFLAGS = -DXINERAMA
+
+# freetype
 FREETYPELIBS = -lfontconfig -lXft
-FREETYPEINC = $(X11INC)/freetype2
+FREETYPEINC = /usr/include/freetype2
+# OpenBSD (uncomment)
+#FREETYPEINC = ${X11INC}/freetype2
+#MANPREFIX = ${PREFIX}/man
+#KVMLIB = -lkvm
 
 # This is needed for the swallow patch
 XCBLIBS = -lX11-xcb -lxcb -lxcb-res
@@ -15,10 +30,10 @@ INCS = -I${X11INC} -I${FREETYPEINC}
 LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} ${XCBLIBS} ${KVMLIB} -lXrender
 
 # flags
-CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${OPTS_CPPFLAGS}
+CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = ${INCS} ${CPPFLAGS} ${OPT_CFLAGS}
-LDFLAGS  = ${LIBS} ${OPT_LDFLAGS}
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full ${INCS} ${CPPFLAGS}
+LDFLAGS  = -Wl,-O3 -flto=full -s ${LIBS}
 
 # Solaris
 #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"

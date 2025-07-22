@@ -1,6 +1,12 @@
-include ../opts.mk
-CFLAGS  += ${OPT_CFLAGS}
-LDFLAGS += -lX11 ${OPT_LDFLAGS}
+PREFIX  := ~/.local
+CC      := cc
+CFLAGS  := -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full
+LDFLAGS := -Wl,-O3 -flto=full -lX11
+
+# FreeBSD (uncomment)
+#LDFLAGS += -L/usr/local/lib -I/usr/local/include
+# # OpenBSD (uncomment)
+#LDFLAGS += -L/usr/X11R6/lib -I/usr/X11R6/include
 
 all: options dwmblocks
 

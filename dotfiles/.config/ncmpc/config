@@ -1,0 +1,5 @@
+host = /home/tch/.local/share/mpd/socket
+
+enable-colors=no
+media_library_primary_tag = album_artist
+visible-bitrate = yes

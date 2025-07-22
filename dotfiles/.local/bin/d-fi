@@ -1,3 +1,0 @@
-#!/bin/sh
-
-${HOME}/.local/libexec/d-fi -q flac -conf ${HOME}/.config/d-fi/config.json "$@"

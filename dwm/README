@@ -2,7 +2,7 @@ dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
 
-This dwm build has these patches applied:
+These patches are applied in this dwm build:
 - alpha
 - attachbelow
 - bar height (spacing)

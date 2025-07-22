@@ -19,10 +19,10 @@ static const float alpha = 0.8;
 static const int failonclear = 1;
 
 /* default message */
-static const char * message = "Suckless: Software that sucks less.";
+static const char *message = "Suckless: Software that sucks less.";
 
 /* text color */
-static const char * text_color = "#ffffff";
+static const char *text_color = "#aaaaaa";
 
 /* text size (must be a valid size) */
-static const char * font_name = "Roboto Mono:size=10";
+static const char *font_name = "monospace:size=10";

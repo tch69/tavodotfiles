@@ -1,20 +1,36 @@
-include ../opts.mk
-
 # dmenu version
 VERSION = 5.3
 
+# paths
+PREFIX = ~/.local
+MANPREFIX = $(PREFIX)/share/man
+
+X11INC = /usr/X11R6/include
+X11LIB = /usr/X11R6/lib
+
+# Xinerama, comment if you don't want it
+XINERAMALIBS  = -lXinerama
+XINERAMAFLAGS = -DXINERAMA
+
 # freetype
 FREETYPELIBS = -lfontconfig -lXft
-FREETYPEINC = $(X11INC)/freetype2
+FREETYPEINC = /usr/include/freetype2
+
+# alpha
+XRENDERLIBS = -lXrender
+
+# OpenBSD (uncomment)
+#FREETYPEINC = $(X11INC)/freetype2
+#MANPREFIX = ${PREFIX}/man
 
 # includes and libs
 INCS = -I$(X11INC) -I$(FREETYPEINC)
-LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS) -lXrender
+LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS) ${XRENDERLIBS}
 
 # flags
-CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS) $(OPTS_CPPFLAGS)
-CFLAGS   = $(INCS) $(CPPFLAGS) $(OPT_CFLAGS)
-LDFLAGS  = $(LIBS) $(OPT_LDFLAGS)
+CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
+CFLAGS   = -std=c99 -pedantic -Wall -O3 -flto=full $(INCS) $(CPPFLAGS)
+LDFLAGS  = -Wl,-O3 -flto=full -s $(LIBS)
 
 # compiler and linker
 CC = cc

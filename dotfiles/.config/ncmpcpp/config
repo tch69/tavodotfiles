@@ -1,4 +1,0 @@
-mpd_host = /home/tch/.local/share/mpd/socket
-
-display_bitrate = yes
-media_library_primary_tag = album_artist

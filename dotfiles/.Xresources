@@ -1,39 +1,23 @@
-! special
-*.foreground:   #dddddd
 *.background:   #000000
+*.foreground:   #dddddd
 *.cursorColor:  #dddddd
 
-! black
-*.color0:       #000000
-*.color8:       #343434
-
-! red
-*.color1:       #e72a2a
-*.color9:       #eb4646
-
-! green
-*.color2:       #0e8e45
-*.color10:      #00b35a
-
-! yellow
-*.color3:       #e86407
-*.color11:      #ff7616
-
-! blue
-*.color4:       #1c55bc
-*.color12:      #3479d0
-
-! magenta
-*.color5:       #ef7d7d
-*.color13:      #ff9494
-
-! cyan
-*.color6:       #498bde
-*.color14:      #5ca9f4
-
-! white
-*.color7:       #dddddd
-*.color15:      #e3e3e3
+*.color0:   #000000
+*.color1:   #e12323
+*.color2:   #06a43e
+*.color3:   #ea7300
+*.color4:   #1257d3
+*.color5:   #c80f6b
+*.color6:   #44a0ef
+*.color7:   #dddddd
+*.color8:   #5a5a5a
+*.color9:   #ff4040
+*.color10:  #0db755
+*.color11:  #ff9630
+*.color12:  #2779e1
+*.color13:  #e73f93
+*.color14:  #7ac0fe
+*.color15:  #ffffff
 
 Xft.dpi: 120
 Xcursor.theme: Adwaita

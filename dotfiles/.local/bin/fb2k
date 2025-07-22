@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "/home/tch/.wine/drive_c/Program Files/foobar2000"
+wine foobar2000.exe
