@@ -100,7 +100,7 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMute, 			spawn, 		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ 0, XF86XK_AudioLowerVolume, 		spawn, 		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-") },
 	{ 0, XF86XK_AudioRaiseVolume, 		spawn, 		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ -l 1") },
-	{ 0, XF86XK_AudioMicMute, 		spawn, 		SHCMD("dwm_micmute 1") },
+	{ 0, XF86XK_AudioMicMute, 		spawn, 		SHCMD("~/.local/scripts/dwm-micmust 1") },
 	{ 0, XF86XK_MonBrightnessDown, 		spawn, 		SHCMD("light -U 0.5") },
 	{ 0, XF86XK_MonBrightnessUp, 		spawn, 		SHCMD("light -A 0.5") },
 	{ MODKEY|ShiftMask, 	XK_l, 		spawn, 		SHCMD("~/.local/scripts/dwm-scrlocker") },
