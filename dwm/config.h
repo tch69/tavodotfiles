@@ -16,7 +16,8 @@ static const char col_dgray[] 		= "#868686";
 static const char col_white[] 		= "#c3c3c3";
 static const unsigned int baralpha 	= 0xcc;
 static const unsigned int borderalpha 	= 0xcc;
-static const char *fonts[] 		= { "monospace:style=Bold:size=9",
+static const char *fonts[] 		= {
+	"monospace:style=Bold:size=9",
 	"Font Awesome 6 Free:style=Solid:size=9",
 	"Noto Color Emoji:size=9",
 	};
@@ -113,6 +114,7 @@ static const Key keys[] = {
 	{ MODKEY, 		XK_Print, 	spawn, 		SHCMD("~/.local/scripts/dwm-scrshoter full") },
 	{ MODKEY|ShiftMask, 	XK_Print, 	spawn, 		SHCMD("~/.local/scripts/dwm-scrshoter window") },
 	{ MODKEY|Mod1Mask, 	XK_Print, 	spawn, 		SHCMD("~/.local/scripts/dwm-scrshoter selected") },
+	{ MODKEY|ShiftMask, 	XK_k,	 	spawn, 		SHCMD("~/.local/scripts/screenkey_toggle") },
 	{ MODKEY|ShiftMask, 	XK_m,	 	spawn, 		SHCMD("~/.local/scripts/dmanopen") },
 	{ MODKEY, 		XK_r, 		spawn, 		SHCMD("~/.local/scripts/dwm-randombg") },
 	{ MODKEY|ShiftMask, 	XK_x,	 	spawn, 		SHCMD("xkill") },
