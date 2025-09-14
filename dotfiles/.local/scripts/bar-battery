@@ -9,7 +9,8 @@ case "$(cat ${bpath}/status)" in
 	"Not charging") status="❌";;
 esac
 
-echo "${bperc}%${status}"
+printf "%s%%%s" "${bperc}" "${status}"
 
 unset bpath
 unset bperc
+unset status

@@ -39,7 +39,7 @@ void pstdout(void);
 #ifndef NO_X
 void setroot(void);
 static void (*writestatus) () = setroot;
-static int setupX();
+static int setupX(void);
 static Display *dpy;
 static int screen;
 static Window root;
@@ -53,7 +53,6 @@ static void (*writestatus) () = pstdout;
 static char statusbar[LENGTH(blocks)][CMDLENGTH] = {0};
 static char statusstr[2][STATUSLENGTH];
 static int statusContinue = 1;
-static int returnStatus = 0;
 
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
@@ -101,7 +100,7 @@ void getsigcmds(unsigned int signal)
 	}
 }
 
-void setupsignals()
+void setupsignals(void)
 {
 #ifndef __OpenBSD__
 	    /* initialize all real time signals with dummy handler */

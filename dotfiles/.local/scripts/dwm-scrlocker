@@ -1,6 +1,9 @@
 #!/bin/sh
 
 animal="$(cowsay -l | sed '2d' | shuf -n1)"
+
 playerctl pause
 [ '$(pgrep -f slock)' ] &&
-	slock -m "$(fortune -a | cowsay -W 96 -f ${animal})";
+	slock -m "$(fortune -a | cowsay -W 120 -f ${animal})";
+
+unset animal

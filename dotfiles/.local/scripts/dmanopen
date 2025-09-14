@@ -1,0 +1,13 @@
+#!/bin/sh
+
+result="$(apropos . | dmenu -l 5 -p 'Open: ')"
+
+if [ -n "${result}" ]; then
+	page=${result%% *}
+	section=$(echo "${result}" | awk '{print $2}' | tr -d '()')
+
+	st -e man ${section} ${page}
+	unset page section
+fi
+
+unset result

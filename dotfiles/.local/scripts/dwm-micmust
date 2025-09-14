@@ -8,9 +8,11 @@ if [ "$ARG" = "1" ]; then
 	wpctl set-mute @DEFAULT_SOURCE@ toggle
 fi
 
-sleep 0.05
+sleep 0.1
 
 case $(wpctl get-volume @DEFAULT_SOURCE@ | awk '{print $3}') in
 	"[MUTED]") echo 1 > ${LED} ;;
 	"") echo 0 > ${LED};;
 esac
+
+unset ARG LED

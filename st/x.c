@@ -712,6 +712,7 @@ setsel(char *str, Time t)
 	XSetSelectionOwner(xw.dpy, XA_PRIMARY, xw.win, t);
 	if (XGetSelectionOwner(xw.dpy, XA_PRIMARY) != xw.win)
 		selclear();
+	clipcopy(NULL);
 }
 
 void
@@ -1444,8 +1445,8 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 		if (glyphidx) {
 			specs[numspecs].font = font->match;
 			specs[numspecs].glyph = glyphidx;
-			specs[numspecs].x = (short)xp + wpadding / 2;
-			specs[numspecs].y = (short)yp + hpadding / 2;
+			specs[numspecs].x = (short)xp + wpadding;
+			specs[numspecs].y = (short)yp + hpadding;
 			xp += runewidth;
 			numspecs++;
 			continue;
@@ -1518,8 +1519,8 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 
 		specs[numspecs].font = frc[f].font;
 		specs[numspecs].glyph = glyphidx;
-		specs[numspecs].x = (short)xp + wpadding / 2;
-		specs[numspecs].y = (short)yp + hpadding / 2;
+		specs[numspecs].x = (short)xp + wpadding;
+		specs[numspecs].y = (short)yp + hpadding;
 		xp += runewidth;
 		numspecs++;
 	}
@@ -1649,12 +1650,12 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 
         /* Render underline and strikethrough. */
 	if (base.mode & ATTR_UNDERLINE || base.mode & ATTR_URL) {
-		XftDrawRect(xw.draw, fg, winx, winy + dc.font.ascent + 1 + hpadding / 2,
+		XftDrawRect(xw.draw, fg, winx, winy + dc.font.ascent + 1 + hpadding,
                         width, 1);
         }
 
 	if (base.mode & ATTR_STRUCK) {
-		XftDrawRect(xw.draw, fg, winx, winy + 2 * dc.font.ascent * chscale / 3 + hpadding / 2,
+		XftDrawRect(xw.draw, fg, winx, winy + 2 * dc.font.ascent * chscale / 3 + hpadding,
 				width, 1);
 	}
 

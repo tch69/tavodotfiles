@@ -19,6 +19,15 @@
 *.color14:  #7ac0fe
 *.color15:  #ffffff
 
-Xft.dpi: 120
 Xcursor.theme: Adwaita
 Xcursor.size: 16
+
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 120
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+URxvt.geometry: 400x400

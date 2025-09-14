@@ -36,7 +36,7 @@ char *vtiden = "\033[?6c";
 static float cwscale = 1.0;
 static float chscale = 1.0;
 static int   wpadding = 0;
-static int   hpadding = 3;
+static int   hpadding = 4;
 
 /*
  * word delimiter string
@@ -95,7 +95,7 @@ const int boxdraw_braille = 0;
 static int bellvolume = 0;
 
 /* default TERM value */
-char *termname = "xterm-256color";
+char *termname = "st-256color";
 
 /*
  * spaces per tab
@@ -269,12 +269,12 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
-	{ TERMMOD,              XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ TERMMOD,              XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_C,           clipcopy,       {.i =  0} },
-	{ MODKEY,               XK_V,           clippaste,      {.i =  0} },
+	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
+	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
+	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
 };
 
 /*

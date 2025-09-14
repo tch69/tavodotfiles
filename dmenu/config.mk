@@ -1,5 +1,5 @@
 # dmenu version
-VERSION = 5.3
+VERSION = 5.4
 
 # paths
 PREFIX = ~/.local
@@ -29,8 +29,8 @@ LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS) ${XRENDERLIBS}
 
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
-CFLAGS   = -std=c99 -pedantic -Wall -O3 -flto=full $(INCS) $(CPPFLAGS)
-LDFLAGS  = -Wl,-O3 -flto=full -s $(LIBS)
+CFLAGS   = -std=c99 -pedantic -Wall -O3 -flto=full -march=native $(INCS) $(CPPFLAGS)
+LDFLAGS  = -Wl,-O3 -Wl,--lto-O3 -Wl,--as-needed -flto=full -s $(LIBS)
 
 # compiler and linker
 CC = cc

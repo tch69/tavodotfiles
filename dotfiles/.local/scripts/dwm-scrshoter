@@ -14,4 +14,7 @@ esac
 if [ ! -z $mode ]; then
 	out="${HOME}/Screenshots/screenshot-${mode}-$(date +'%F_%H-%M-%S').png"
 	${cmd} ${opts} ${out}
+	unset out
 fi
+
+unset cmd mode opts

@@ -1,5 +1,5 @@
 # slock version
-VERSION = 1.5
+VERSION = 1.6
 
 # Customize below to fit your system
 
@@ -16,8 +16,8 @@ LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr -lXinerama -lXft
 
 # flags
 CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE -DHAVE_SHADOW_H
-CFLAGS = -std=c99 -pedantic -Wall -O3 -flto=full ${INCS} ${CPPFLAGS}
-LDFLAGS = -Wl,-O3 -flto=full -s ${LIBS}
+CFLAGS = -std=c99 -pedantic -Wall -O3 -flto=full -march=native ${INCS} ${CPPFLAGS}
+LDFLAGS = -Wl,--lto-O3 -Wl,-O3 -flto=full -s ${LIBS}
 COMPATSRC = explicit_bzero.c
 
 # On OpenBSD and Darwin remove -lcrypt from LIBS
@@ -27,6 +27,3 @@ COMPATSRC = explicit_bzero.c
 #CPPFLAGS = -DVERSION=\"${VERSION}\" -D_BSD_SOURCE -D_NETBSD_SOURCE
 # On OpenBSD set COMPATSRC to empty
 #COMPATSRC =
-
-# compiler and linker
-CC = cc

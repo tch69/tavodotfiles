@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 6.5
+VERSION = 6.6
 
 # Customize below to fit your system
 
@@ -32,8 +32,8 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} ${XCBLIBS} ${KVMLIB} -l
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full ${INCS} ${CPPFLAGS}
-LDFLAGS  = -Wl,-O3 -flto=full -s ${LIBS}
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full -march=native ${INCS} ${CPPFLAGS}
+LDFLAGS  = -Wl,-O3 -Wl,--lto-O3 -Wl,--as-needed -flto=full -s ${LIBS}
 
 # Solaris
 #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"

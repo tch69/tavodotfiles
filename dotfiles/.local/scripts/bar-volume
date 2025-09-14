@@ -7,4 +7,5 @@ case "$(pactl get-sink-mute @DEFAULT_SINK@)" in
 	"Mute: no") emo="🔊";;
 esac
 
-echo "${emo} ${vol}"
+printf "%s %s" "${emo}" "${vol}"
+unset emo vol

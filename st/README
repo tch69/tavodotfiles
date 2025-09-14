@@ -8,6 +8,7 @@ This is my custom build of st with these patches applied:
 - bold is not bright
 - boxdraw
 - clickurl noncontrol
+- clipboard
 - font2
 - ligatures
 - newterm
