@@ -1,7 +1,7 @@
 #/bin/sh
 
-if [ -z "$(pgrep screenkey)" ]; then
+if [ -z "$(pgrep -f screenkey)" ]; then
 	screenkey --font-size small --opacity 0.3;
 else
-	pkill screenkey;
+	pkill -f screenkey;
 fi
