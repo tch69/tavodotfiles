@@ -46,9 +46,16 @@
 #include <sys/sysctl.h>
 #include <kvm.h>
 #endif /* __OpenBSD */
-
+#ifdef __FreeBSD__
+#include <sys/sysctl.h>
+#include <sys/user.h>
+#include <sys/fcntl.h>
+#include <kvm.h>
+#include <paths.h>
+#endif /* __FreeBSD__ */
 #include "drw.h"
 #include "util.h"
+
 
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -2550,7 +2557,7 @@ winpid(Window w)
 	if (result == (pid_t)-1)
 		result = 0;
 #endif /* __linux__ */
-#ifdef __OpenBSD__
+#if defined(__OpenBSD__) || defined(__FreeBSD__)
 	Atom type;
 	int format;
 	unsigned long len, bytes;
@@ -2563,7 +2570,7 @@ winpid(Window w)
 	ret = *(pid_t*)prop;
 	XFree(prop);
 	result = ret;
-#endif /* __OpenBSD__ */
+#endif /* __OpenBSD__ || __FreeBSD__ */
 
 	return result;
 }
@@ -2573,7 +2580,7 @@ getparentprocess(pid_t p)
 {
 	unsigned int v = 0;
 
-#ifdef __linux__
+#if defined(__linux__)
 	FILE *f;
 	char buf[256];
 	snprintf(buf, sizeof(buf) - 1, "/proc/%u/stat", (unsigned)p);
@@ -2584,6 +2591,19 @@ getparentprocess(pid_t p)
 	fscanf(f, "%*u %*s %*c %u", &v);
 	fclose(f);
 #endif /* __linux__*/
+
+#ifdef __FreeBSD__
+	int n = -1;
+	kvm_t *kd;
+	struct kinfo_proc *kp;
+
+	kd = kvm_openfiles(NULL, _PATH_DEVNULL, NULL, O_RDONLY, NULL);
+	if (kd == NULL)
+		return 0;
+
+	kp = kvm_getprocs(kd, KERN_PROC_PID, p, &n);
+	v = kp->ki_ppid;
+#endif
 
 #ifdef __OpenBSD__
 	int n;

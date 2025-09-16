@@ -17,10 +17,11 @@ XINERAMAFLAGS = -DXINERAMA
 # freetype
 FREETYPELIBS = -lfontconfig -lXft
 FREETYPEINC = /usr/include/freetype2
-# OpenBSD (uncomment)
+# *BSD (uncomment)
 #FREETYPEINC = ${X11INC}/freetype2
-#MANPREFIX = ${PREFIX}/man
 #KVMLIB = -lkvm
+# OpenBSD/NetBSD (uncomment)
+#MANPREFIX = ${PREFIX}/man
 
 # This is needed for the swallow patch
 XCBLIBS = -lX11-xcb -lxcb -lxcb-res
@@ -30,9 +31,10 @@ INCS = -I${X11INC} -I${FREETYPEINC}
 LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} ${XCBLIBS} ${KVMLIB} -lXrender
 
 # flags
+# FreeBSD: add -D__BSD_VISIBLE
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full -march=native ${INCS} ${CPPFLAGS}
+CFLAGS   = -std=gnu99 -pedantic -Wall -Wno-deprecated-declarations -O3 -flto=full -march=native ${INCS} ${CPPFLAGS}
 LDFLAGS  = -Wl,-O3 -Wl,--lto-O3 -Wl,--as-needed -flto=full -s ${LIBS}
 
 # Solaris
